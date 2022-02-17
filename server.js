@@ -12,6 +12,15 @@ app.use(function(req, res, next) {
 	console.log(req.method + ' ' + req.path + ' - ' + req.ip);
 	next();
 });
+app.use('/public', express.static(__dirname + '/public'));
+
+// app.get('/', (req, res) => {
+// 	var response = { message: 'Hello json' };
+// 	if (process.env.MESSAGE_STYLE === 'uppercase') {
+// 		response.message = response.message.toUpperCase();
+// 	}
+// 	res.json(response);
+// });
 if (!process.env.DISABLE_XORIGIN) {
 	app.use(function(req, res, next) {
 		var allowedOrigins = [ 'https://narrow-plane.gomix.me', 'https://www.freecodecamp.com' ];
@@ -24,15 +33,6 @@ if (!process.env.DISABLE_XORIGIN) {
 		next();
 	});
 }
-
-app.get('/', (req, res) => {
-	var response = { message: 'Hello json' };
-	if (process.env.MESSAGE_STYLE === 'uppercase') {
-		response.message = response.message.toUpperCase();
-	}
-	res.json(response);
-});
-app.use('/public', express.static(__dirname + '/public'));
 
 var port = process.env.PORT || 3000;
 bGround.setupBackgroundApp(app, myApp, __dirname).listen(port, function() {
