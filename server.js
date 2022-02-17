@@ -8,7 +8,10 @@ var myApp = require('./myApp');
 var express = require('express');
 var app = express();
 require('dotenv').config();
-
+app.use(function(req, res, next) {
+	console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+	next();
+});
 if (!process.env.DISABLE_XORIGIN) {
 	app.use(function(req, res, next) {
 		var allowedOrigins = [ 'https://narrow-plane.gomix.me', 'https://www.freecodecamp.com' ];
@@ -21,10 +24,7 @@ if (!process.env.DISABLE_XORIGIN) {
 		next();
 	});
 }
-app.use(function(req, res, next) {
-	console.log(req.method + ' ' + req.path + ' - ' + req.ip);
-	next();
-});
+
 app.get('/', (req, res) => {
 	var response = { message: 'Hello json' };
 	if (process.env.MESSAGE_STYLE === 'uppercase') {
