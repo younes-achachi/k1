@@ -21,7 +21,11 @@ if (!process.env.DISABLE_XORIGIN) {
 		next();
 	});
 }
-app.get('/json', (req, res) => {
+app.use(function(req, res, next) {
+	console.log(req.method + ' ' + req.path + ' - ' + req.ip);
+	next();
+});
+app.get('/', (req, res) => {
 	var response = { message: 'Hello json' };
 	if (process.env.MESSAGE_STYLE === 'uppercase') {
 		response.message = response.message.toUpperCase();
