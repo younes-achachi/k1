@@ -41,5 +41,5 @@ app.use(
 		graphiql: true
 	})
 );
-const PORT = () => console.log(process.env);
-app.listen(10000, () => console.log('listening to port ', PORT));
+console.log(process);
+app.listen(10000, () => console.log('listening to port '));
