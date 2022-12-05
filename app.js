@@ -24,9 +24,16 @@ mongoose.connection.once('open', (data) => {
 });
 const schema = require('./schema/schema');
 const author = require('./models/author');
-app.get('/', (req, res) => {
-	res.sendFile(path.join(__dirname + '/index.html'));
-}); //enable graphql schema  on node server
+// app.get('/', (req, res) => {
+// 	res.sendFile(path.join(__dirname + '/index.html'));
+// }); //enable graphql schema  on node server
+app.use(
+	'/grphql',
+	graphqlHTTP({
+		schema,
+		graphiql: true
+	})
+);
 app.use(
 	'/',
 	graphqlHTTP({
