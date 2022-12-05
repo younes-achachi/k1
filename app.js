@@ -35,4 +35,4 @@ app.use(
 	})
 );
 const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log('listening to port ', PORT, process.env.USER, process.env.MDP));
+app.listen(10000, () => console.log('listening to port ', PORT, process.env.USER, process.env.MDP));
