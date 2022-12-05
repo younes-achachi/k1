@@ -35,4 +35,4 @@ app.use(
 	})
 );
 
-app.listen(4000, () => console.log('listening to port 4000', process.env.USER, process.env.MDP));
+app.listen(process.env.PORT || 4000, () => console.log('listening to port 4000', process.env.USER, process.env.MDP));
