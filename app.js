@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const path = require('path');
+
 const app = express();
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
@@ -20,10 +22,9 @@ mongoose
 mongoose.connection.once('open', (data) => {
 	console.log('connected to db ');
 });
-
 const schema = require('./schema/schema');
 const author = require('./models/author');
-app.get('/', () => 'llll');
+app.get('/', (req, res) => res.send('hello boy'));
 //enable graphql schema  on node server
 app.use(
 	'/graphql',
