@@ -41,5 +41,4 @@ app.use(
 		graphiql: true
 	})
 );
-console.log(process);
 app.listen(10000, () => console.log('listening to port '));
