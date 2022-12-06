@@ -11,7 +11,7 @@ const bookSchema = require('./models/book');
 // bookSchema.deleteMany().then((res) => console.log(res));
 //allow cross-origin requests
 require('dotenv').config();
-app.use(cors({origin:'https://hq-1jzj.onrender.com'}));
+app.use(cors({origin:'*'}));
 //  connect to mongdb  with credentiels
 mongoose
 	.connect(`mongodb+srv://${process.env.USER_MONGO}:${process.env.MDP}@cluster0.ptp5m.mongodb.net/dbyounes`)
